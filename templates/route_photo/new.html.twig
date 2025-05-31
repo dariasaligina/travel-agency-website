@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RoutePhoto{% endblock %}
+
+{% block body %}
+    <h1>Create new RoutePhoto</h1>
+
+    {{ include('route_photo/_form.html.twig') }}
+
+    <a href="{{ path('app_route_photo_index') }}">back to list</a>
+{% endblock %}

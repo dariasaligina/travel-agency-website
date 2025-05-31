@@ -4,194 +4,7 @@
 
 
 {% block stylesheets %}
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        header {
-            background: #505050;
-            color: white;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #bbb 1px solid;
-        }
-
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-
-        header ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            overflow: hidden;
-        }
-
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-
-        header #branding {
-            float: left;
-        }
-
-        header #branding h1 {
-            margin: 0;
-        }
-
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-
-        header .highlight, header .current a {
-            color: #e8491d;
-            font-weight: bold;
-        }
-
-        header a:hover {
-            color: #bbb;
-            font-weight: bold;
-        }
-
-        
-
-        .button_1 {
-            height: 38px;
-            background: #e8491d;
-            border: 0;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: #fff;
-        }
-
-        #main {
-            padding: 20px;
-        }
-
-        #main h1 {
-            font-size: 2em;
-        }
-
-        article#main-col {
-            float: left;
-            width: 65%;
-        }
-
-        aside#sidebar {
-            float: right;
-            width: 30%;
-            margin-top: 10px;
-        }
-
-        aside#sidebar .quote {
-            padding: 20px;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            padding: 20px;
-            margin-top: 20px;
-            color: #fff;
-            background-color: #e8491d;
-            text-align: center;
-        }
-
-        /* Стили для слайд-шоу */
-        .slideshow-container {
-            position: relative;
-            background: #f2f2f2;
-        }
-
-        .mySlides {
-            display: none;
-            padding: 80px;
-            text-align: center;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -30px;
-            padding: 16px;
-            color: #888;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-
-        .next {
-            position: absolute;
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-        }
-
-        
-        /* Стили для программы по дням */
-        .itinerary-day {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-        }
-
-        .itinerary-day h3 {
-            margin-top: 0;
-            color: #e8491d;
-        }
-
-        /* Стили для дат и цен */
-        .dates-prices {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-        }
-
-        .dates-prices table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .dates-prices th, .dates-prices td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* Стили для организационной информации */
-        .org-info {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-        }
-    </style>
-
+{{include("tours/_style.css.twig")}}
 {%endblock%}
 
 
@@ -246,20 +59,7 @@
 
 {% block body %}
 
-    <header>
-        <div class="container">
-            <div id="branding">
-                <h1><span class="highlight">Туристическое агенство</span> Океан впечатлений</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li class="current"><a href="#">Главная</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Услуги</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    {{include("tours/_header.html.twig")}}
 
     
 
@@ -342,9 +142,7 @@
         </div>
     </section>
 
-    <footer>
-        <p>Туристическое Агенство "Океан впечатлений", Copyright &copy; 2025</p>
-    </footer>
+    {{include("tours/_footer.html.twig")}}
 
     
 

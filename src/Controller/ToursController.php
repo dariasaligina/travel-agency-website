@@ -8,10 +8,18 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ToursController extends AbstractController
 {
-    #[Route('/tours', name: 'app_tours')]
-    public function index(): Response
+    #[Route('/tours/tour', name: 'tour_description')]
+    public function description(): Response
     {
-        return $this->render('tours/index.html.twig', [
+        return $this->render('tours/tour.html.twig', [
+            'controller_name' => 'ToursController',
+        ]);
+    }
+
+    #[Route('/tours/catalog', name: 'tour_catalog')]
+    public function catalog(): Response
+    {
+        return $this->render('tours/catalog.html.twig', [
             'controller_name' => 'ToursController',
         ]);
     }
