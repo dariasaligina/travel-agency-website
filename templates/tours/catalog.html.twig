@@ -11,61 +11,50 @@
 {{include("tours/_header.html.twig")}}
 <div class="tour-container">
         <div class="filter-form">
-            <h2>Filter Tours</h2>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date">
+            <h2>Фильтр туров</h2>
+            <form>
+            <label for="date">Дата начала:</label>
+            <input type="date" id="date" name="start_date" value="{{ request_value.start_date ?? "now"|date("Y-m-d") }}">
+             <label for="date">Дата конца:</label>
+            <input type="date" id="date" name="end_date" value="{{request_value.end_date}}">
 
-            <label for="destination">Destination:</label>
+
+            <label for="destination">Направление:</label>
             <select id="destination" name="destination">
-                <option value="">Any</option>
-                <option value="Paris">Paris</option>
-                <option value="Rome">Rome</option>
-                <option value="Tokyo">Tokyo</option>
-                <option value="New York">New York</option>
+                <option value="0">Любое</option>
+                {% for city in cities%}
+                <option value="{{city.id}}" {{request_value.destination==city.id ? 'selected'}}>{{city.name}}</option>
+                {% endfor %}
+                
             </select>
 
-            <label for="departure">Departure Location:</label>
+            <label for="departure">Место отправления:</label>
             <select id="departure" name="departure">
-                <option value="">Any</option>
-                <option value="London">London</option>
-                <option value="Berlin">Berlin</option>
-                <option value="Moscow">Moscow</option>
-                <option value="Beijing">Beijing</option>
+                <option value="0">Любое</option>
+                {% for city in cities%}
+                <option value="{{city.id}}" {{request_value.departure==city.id ? 'selected'}}>{{city.name}}</option>
+                {% endfor %}
             </select>
 
-            <label for="max-price">Max Price:</label>
-            <input type="number" id="max-price" name="max-price" placeholder="Enter max price">
+            <label for="max-price">Максимальная цена:</label>
+            <input type="number" id="max-price" name="max-price" placeholder="Введите максимальную цену" value = {{ request_value.max_price ?? ""}}>
 
-            <button type="submit">Apply Filters</button>
+            <button type="submit">Применить фильтры</button>
+            </form>
         </div>
 
         <div class="tour-grid">
+
+            {%for route in routs%}
             <div class="tour-block">
                 <img src="https://placehold.co/600x400/orange/white" alt="Tour Image">
-                <h3>Tour Name 1</h3>
-                <p class="duration">7 Days</p>
-                <p>Brief description of the tour. This should attract the user to read more.</p>
+                <a href="{{path('tour_description', {'id':route.id})}}"><h3>{{route.name}}</h3></a>
+                <p class="duration">{{route.duration}}</p>
+                <p>{{route.description|raw}}</p>
             </div>
+            {%endfor%}
 
-            <div class="tour-block">
-                <img src="https://placehold.co/600x400" alt="Tour Image">
-                <a href = "#"><h3>Tour Name 2</h3></a>
-                <p class="duration">5 Days</p>
-                <p>Brief description of the tour. This should attract the user to read more.</p>
-            </div>
-
-            <div class="tour-block">
-                <img src="https://placehold.co/600x400/orange/blue" alt="Tour Image">
-                <h3>Tour Name 3</h3>
-                <p class="duration">10 Days</p>
-                <p>Brief description of the tour. This should attract the user to read more.</p>
-            </div>
-             <div class="tour-block">
-                <img src="https://placehold.co/600x400/orange/blue" alt="Tour Image">
-                <h3>Tour Name 4</h3>
-                <p class="duration">10 Days</p>
-                <p>Brief description of the tour. This should attract the user to read more.</p>
-            </div>
+            
         </div>
     </div>
     {{include("tours/_footer.html.twig")}}

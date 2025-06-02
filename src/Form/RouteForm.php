@@ -2,26 +2,31 @@
 
 namespace App\Form;
 
+use App\Entity\City;
 use App\Entity\Route as rte;
-use App\Entity\RoutePhoto;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class RoutePhotoForm extends AbstractType
+class RouteForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photo', FileType::class, [  // Change to FileType
-                    'label' => 'Photo (Image file)',
-                    'mapped' => false, // Important: disable mapping to the entity
-                    'required' => false, // Adjust as needed
-                ])
-            ->add('route', EntityType::class, [
-                'class' => rte::class,
+            ->add('name')
+            ->add('description')
+            ->add('program')
+            ->add('additional_info')
+            ->add('trip_span')
+            ->add('duration')
+            ->add('route_span')
+            ->add('departure_city', EntityType::class, [
+                'class' => City::class,
+                'choice_label' => 'id',
+            ])
+            ->add('direction', EntityType::class, [
+                'class' => City::class,
                 'choice_label' => 'id',
             ])
         ;
@@ -30,7 +35,7 @@ class RoutePhotoForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => RoutePhoto::class,
+            'data_class' => rte::class,
         ]);
     }
 }

@@ -66,8 +66,8 @@
     <section id="main">
         <div class="container">
             <article id="main-col">
-                <h1>Название Поездки</h1>
-                <p>Краткое описание поездки, которое привлекает внимание и вызывает интерес.</p>
+                <h1>{{route.name}}</h1>
+                {{route.description| raw}}
 
                 <div class="slideshow-container">
                     <div class="mySlides">
@@ -87,21 +87,9 @@
                 </div>
                 
 
-                <h2>Программа Поездки по Дням</h2>
-                <div class="itinerary-day">
-                    <h3>День 1: Прибытие и Размещение</h3>
-                    <p>Описание активностей и событий первого дня.</p>
-                </div>
-
-                <div class="itinerary-day">
-                    <h3>День 2: Экскурсия по Городу</h3>
-                    <p>Описание активностей и событий второго дня.</p>
-                </div>
-
-                <div class="itinerary-day">
-                    <h3>День 3: Свободное Время и Отъезд</h3>
-                    <p>Описание активностей и событий третьего дня.</p>
-                </div>
+                <h2>Программа Поездки</h2>
+                {{route.program | raw}}
+                
             </article>
 
             <aside id="sidebar">
@@ -117,26 +105,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            {% for trip in route.getTrips().ToArray()|sort((a, b) => 
+    date(a.StartDate) <=> date(b.StartDate)
+)%}
                                 <tr>
-                                    <td>01.01.2026-04.01.2026</td>
-                                    <td>15000 RUB</td>
-                                    <td>10</td>
+                                    <td>{{trip.StartDate|date("d.m.Y")}} - {{ trip.StartDate|date_modify('+' ~ route.routeSpan.d ~" days")|date("d.m.Y") }}</td>
+                                    <td>{{trip.price}} RUB</td>
+                                    <td>{{trip.SpotsNumber}}</td>
                                 </tr>
-                                <tr>
-                                    <td>08.01.2026</td>
-                                    <td>15000 RUB</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>15.01.2026</td>
-                                    <td>15000 RUB</td>
-                                    <td>10</td>
-                                </tr>
+                                {% endfor %}
+                                
                             </tbody>
                         </table>
                     </div>
                     <br>
-                    <p>Дополнительная организационная информация: визовые требования, страховка, рекомендации по экипировке.</p>
+                    {{route.additionalInfo | raw}}
                 </div>
             </aside>
         </div>

@@ -28,6 +28,8 @@ class Route
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $additional_info = null;
 
+   
+
     /**
      * @var Collection<int, RoutePhoto>
      */
@@ -50,6 +52,11 @@ class Route
      */
     #[ORM\OneToMany(targetEntity: Trips::class, mappedBy: 'route')]
     private Collection $trips;
+
+    #[ORM\Column]
+    private ?\DateInterval $route_span = null;
+
+    
 
     public function __construct()
     {
@@ -202,6 +209,18 @@ class Route
                 $trip->setRoute(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRouteSpan(): ?\DateInterval
+    {
+        return $this->route_span;
+    }
+
+    public function setRouteSpan(\DateInterval $route_span): static
+    {
+        $this->route_span = $route_span;
 
         return $this;
     }

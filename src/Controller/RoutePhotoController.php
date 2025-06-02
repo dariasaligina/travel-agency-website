@@ -9,14 +9,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route as rt;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface; // Import SluggerInterface
 
-#[Route('/route/photo')]
+#[rt('/route/photo')]
 final class RoutePhotoController extends AbstractController
 {
-    #[Route(name: 'app_route_photo_index', methods: ['GET'])]
+    #[rt(name: 'app_route_photo_index', methods: ['GET'])]
     public function index(RoutePhotoRepository $routePhotoRepository): Response
     {
         return $this->render('route_photo/index.html.twig', [
@@ -24,7 +24,7 @@ final class RoutePhotoController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_route_photo_new', methods: ['GET', 'POST'])]
+    #[rt('/new', name: 'app_route_photo_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $routePhoto = new RoutePhoto();
@@ -65,7 +65,7 @@ final class RoutePhotoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_route_photo_show', methods: ['GET'])]
+    #[rt('/{id}', name: 'app_route_photo_show', methods: ['GET'])]
     public function show(RoutePhoto $routePhoto): Response
     {
         return $this->render('route_photo/show.html.twig', [
@@ -73,7 +73,7 @@ final class RoutePhotoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_route_photo_edit', methods: ['GET', 'POST'])]
+    #[rt('/{id}/edit', name: 'app_route_photo_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, RoutePhoto $routePhoto, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(RoutePhotoForm::class, $routePhoto);
@@ -111,7 +111,7 @@ final class RoutePhotoController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_route_photo_delete', methods: ['POST'])]
+    #[rt('/{id}', name: 'app_route_photo_delete', methods: ['POST'])]
     public function delete(Request $request, RoutePhoto $routePhoto, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$routePhoto->getId(), $request->request->get('_token'))) {

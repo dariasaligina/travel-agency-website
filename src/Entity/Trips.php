@@ -6,6 +6,7 @@ use App\Repository\TripsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: TripsRepository::class)]
 class Trips
@@ -19,9 +20,7 @@ class Trips
     #[ORM\JoinColumn(nullable: false)]
     private ?route $route = null;
 
-    #[ORM\Column]
-    private ?\DateInterval $trip_span = null;
-
+    
     #[ORM\Column]
     private ?int $price = null;
 
@@ -33,6 +32,22 @@ class Trips
      */
     #[ORM\OneToMany(targetEntity: Triprequest::class, mappedBy: 'trip')]
     private Collection $triprequests;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+private ?\DateTimeInterface $startDate = null;
+
+// ...
+
+public function getStartDate(): ?\DateTimeInterface
+{
+    return $this->startDate;
+}
+
+public function setStartDate(\DateTimeInterface $startDate): static
+{
+    $this->startDate = $startDate;
+    return $this;
+}
 
     public function __construct()
     {
@@ -56,17 +71,6 @@ class Trips
         return $this;
     }
 
-    public function getTripSpan(): ?\DateInterval
-    {
-        return $this->trip_span;
-    }
-
-    public function setTripSpan(\DateInterval $trip_span): static
-    {
-        $this->trip_span = $trip_span;
-
-        return $this;
-    }
 
     public function getPrice(): ?int
     {
