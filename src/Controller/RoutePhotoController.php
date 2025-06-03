@@ -56,7 +56,7 @@ final class RoutePhotoController extends AbstractController
             $entityManager->persist($routePhoto);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_route_photo_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_route_photo_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('route_photo/new.html.twig', [
