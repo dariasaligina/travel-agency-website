@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Route as Rt;
 use App\Repository\CityRepository;
 use App\Repository\RouteRepository;
+use DateTimeInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 final class ToursController extends AbstractController
@@ -45,7 +46,9 @@ final class ToursController extends AbstractController
             $filters["departure_city"] = $departureCity;
         }
         }
-        $routs = $route_repository->findBy($filters);
+        $routs = 
+        $route_repository->findRoutesMinPrice(new \DateTime($request_value['start_date']), intval($request_value["destination"]), intval($request_value["departure"]),$request_value["max_price"]? intval($request_value["max_price"]):null);
+
         $cities = $city_repository->findAll();
         return $this->render('tours/catalog.html.twig', [
             'controller_name' => 'ToursController',

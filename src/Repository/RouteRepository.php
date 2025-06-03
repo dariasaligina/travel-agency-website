@@ -6,6 +6,7 @@ use App\Entity\Route;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @extends ServiceEntityRepository<Route>
  */
@@ -15,6 +16,41 @@ class RouteRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Route::class);
+    }
+
+    public function findRoutesMinPrice(?\DateTimeInterface $date1,
+    int $direction_id,
+    int $departure_id,
+    ?int $max_price): array
+    {
+        $qb = $this->createQueryBuilder('r')
+        ->select('DISTINCT r') // Убираем дубликаты
+        ->innerJoin('r.trips', 't') // innerJoin вместо leftJoin
+        ->leftJoin('r.direction', 'd')
+        ->leftJoin('r.departure_city', 'dep');
+
+    // Условия фильтрации
+    if ($date1 !== null) {
+        $qb->andWhere('t.startDate > :date1')
+           ->setParameter('date1', $date1);
+    }
+
+    if ($direction_id !== 0) {
+        $qb->andWhere('d.id = :direction_id')
+           ->setParameter('direction_id', $direction_id);
+    }
+
+    if ($departure_id !== 0) {
+        $qb->andWhere('dep.id = :departure_id')
+           ->setParameter('departure_id', $departure_id);
+    }
+
+    if ($max_price !== null) {
+        $qb->andWhere('t.price <= :max_price')
+           ->setParameter('max_price', $max_price);
+    }
+
+    return $qb->getQuery()->getResult();
     }
 
     //    /**
