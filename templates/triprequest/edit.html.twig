@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Triprequest{% endblock %}
+
+{% block body %}
+    <h1>Edit Triprequest</h1>
+
+    {{ include('triprequest/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_triprequest_index') }}">back to list</a>
+
+    {{ include('triprequest/_delete_form.html.twig') }}
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TriprequestRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TriprequestRepository::class)]
 class Triprequest
@@ -14,18 +15,30 @@ class Triprequest
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'triprequests')]
+    #[Assert\NotNull(message: 'Поездка должна быть указана')]
     private ?trips $trip = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Имя обязательно для заполнения')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Email обязателен для заполнения')]
+    #[Assert\Email(message: 'Некорректный формат email')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Телефон обязателен для заполнения')]
+    #[Assert\Regex(
+        pattern: '/^\+?[0-9\s\-\(\)]{7,20}$/',
+        message: 'Некорректный формат телефона'
+    )]
     private ?string $phone = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Укажите количество человек')]
+    #[Assert\Positive(message: 'Количество человек должно быть положительным числом')]
+    
     private ?int $people_number = null;
 
     #[ORM\Column]

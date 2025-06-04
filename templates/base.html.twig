@@ -11,9 +11,20 @@
         
     </head>
     <body>
-     
+     {% block body%}
+     {% endblock %}
 
-        {% block body %}{% endblock %}
+
+        {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <script>
+                    alert("{{ message|escape('js') }}");
+                    </script>
+                {% endfor %}
+            {% endfor %}
+        
+
+            
         {% block javascripts %}
         {% endblock %}
     </body>
