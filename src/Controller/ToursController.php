@@ -47,8 +47,13 @@ final class ToursController extends AbstractController
         }
         }
         $routs = 
-        $route_repository->findRoutesMinPrice(new \DateTime($request_value['start_date']), intval($request_value["destination"]), intval($request_value["departure"]),$request_value["max_price"]? intval($request_value["max_price"]):null);
-
+        $route_repository->findRoutesWithFilter(
+        $request_value['start_date']? new \DateTime($request_value['start_date']) : null,
+        $request_value['end_date']? new \DateTime($request_value["end_date"]) : null, 
+        intval($request_value["destination"]), 
+        intval($request_value["departure"]),
+        $request_value["max_price"]? intval($request_value["max_price"]):null);
+        
         $cities = $city_repository->findAll();
         return $this->render('tours/catalog.html.twig', [
             'controller_name' => 'ToursController',

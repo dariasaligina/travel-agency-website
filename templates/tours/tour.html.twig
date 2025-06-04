@@ -104,11 +104,13 @@
                             {% for trip in route.getTrips().ToArray()|sort((a, b) => 
     date(a.StartDate) <=> date(b.StartDate)
 )%}
+{% if date(trip.StartDate) > date()%}
                                 <tr>
                                     <td>{{trip.StartDate|date("d.m.Y")}} - {{ trip.StartDate|date_modify('+' ~ route.routeSpan.d ~" days")|date("d.m.Y") }}</td>
                                     <td>{{trip.price}} RUB</td>
                                     <td>{{trip.SpotsNumber}}</td>
                                 </tr>
+                                {% endif %}
                                 {% endfor %}
                                 
                             </tbody>
