@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class ToursController extends AbstractController
 {
-    #[Route('/tours/route/{id<\d+>}', name: 'tour_description')]
+    #[Route('route/{id<\d+>}', name: 'tour_description')]
     public function description(Rt $route, Request $request, EntityManagerInterface $entityManager): Response
     {
         $triprequest = new Triprequest();
@@ -56,7 +56,7 @@ final class ToursController extends AbstractController
         ]);
     }
 
-    #[Route('/tours/catalog', name: 'tour_catalog')]
+    #[Route('catalog', name: 'tour_catalog')]
     public function catalog(Request $request, RouteRepository $route_repository, CityRepository $city_repository): Response
     {
         $filters=[];
@@ -96,11 +96,11 @@ final class ToursController extends AbstractController
         ]);
     }
 
-    #[Route("tours", name: "main")]
+    #[Route("", name: "main")]
     public function main(){
         return $this->render("tours/index.html.twig");
     }
-    #[Route("tours/about", name:"about")]
+    #[Route("about", name:"about")]
     public function about(){
         return $this->render("tours/about.html.twig");
     }
