@@ -105,10 +105,18 @@
     date(a.StartDate) <=> date(b.StartDate)
 )%}
 {% if date(trip.StartDate) > date()%}
+{% set activeRequests = trip.getTriprequests().filter(r => r.isActive()) %}
+            {% set occupiedSpots = activeRequests.reduce((sum, r) => sum + r.getPeopleNumber(), 0) %}
+            {% set availableSpots = trip.SpotsNumber - occupiedSpots %}
+            
                                 <tr>
                                     <td>{{trip.StartDate|date("d.m.Y")}} - {{ trip.StartDate|date_modify('+' ~ route.routeSpan.d ~" days")|date("d.m.Y") }}</td>
                                     <td>{{trip.price}} RUB</td>
-                                    <td>{{trip.SpotsNumber}}</td>
+                                    {% if availableSpots >= 0%}
+                                    <td>{{availableSpots}}</td>
+                                    {% else %}
+                                    <td>0 ({{availableSpots*-1}} в очереди)</td>
+                                    {% endif %}
                                 </tr>
                                 {% endif %}
                                 {% endfor %}

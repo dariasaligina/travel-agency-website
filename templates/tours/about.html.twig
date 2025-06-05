@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToursController!{% endblock %}
+
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+
+
+        <style>
+        
+
+        #main {
+            padding: 40px 0;
+            background: #fff;
+        }
+
+        #main h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #e8491d;
+            text-align: center;
+        }
+
+        #main h2 {
+            color: #e8491d;
+            margin-top: 30px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .about-text {
+            padding-right: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .mission, .vision {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #e8491d;
+        }
+
+        
+
+        .stats {
+            background: #505050;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item .number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #e8491d;
+            margin-bottom: 10px;
+        }
+
+        .cta {
+            background:#505050;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .cta h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+       
+        
+    </style>
+       {{include("tours/_header.html.twig")}}
+        <section id="main">
+            <div class="container">
+                <h1>О нашем агентстве</h1>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Туристическое агентство "Океан впечатлений" было основано в 2010 году группой энтузиастов, влюбленных в путешествия. Наша миссия - делать мир ближе, а путешествия - доступнее и комфортнее для каждого.</p>
+                        
+                        <p>За более чем 10 лет работы мы организовали тысячи незабываемых поездок для наших клиентов. Мы специализируемся на внутреннем туризме по России, предлагая как классические маршруты, так и уникальные авторские туры.</p>
+                        
+                        <p>Наше агентство - это команда профессионалов, которые знают о путешествиях все. Мы лично проверяем каждый отель, каждый маршрут и каждую экскурсию, чтобы ваш отдых был идеальным.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="{{  asset('images/training.jpg')}}" alt="Наша команда">
+                    </div>
+                </div>
+                
+                <div class="mission-vision">
+                    <div class="mission">
+                        <h2>Наша миссия</h2>
+                        <p>Открывать для наших клиентов красоту и разнообразие России, создавая комфортные и насыщенные путешествия, которые остаются в памяти навсегда. Мы стремимся к тому, чтобы каждый наш тур был не просто поездкой, а настоящим приключением.</p>
+                    </div>
+                    <div class="vision">
+                        <h2>Наше видение</h2>
+                        <p>Стать ведущим туроператором по внутреннему туризму в России, предлагая инновационные туристические продукты и сервис высочайшего уровня. Мы хотим, чтобы путешествия по России стали первым выбором для наших соотечественников.</p>
+                    </div>
+                </div>
+                
+                
+        </section>
+        
+        <section class="stats">
+            <div class="container">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="number">12+</div>
+                        <div class="label">Лет на рынке</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">5000+</div>
+                        <div class="label">Довольных клиентов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">20+</div>
+                        <div class="label">Разных туров</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">100%</div>
+                        <div class="label">Гарантия качества</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="container">
+                <h1>Готовы к новым впечатлениям?</h1>
+                <p>Наши специалисты помогут вам подобрать идеальный тур, соответствующий вашим пожеланиям и бюджету.</p>
+                <a href="{{path("tour_catalog")}}" class="button_1" style="background: #505050; color: #e8491d;">Перейти к турам</a>
+            </div>
+        </section>
+
+        {{include("tours/_footer.html.twig")}}
+    
+{%endblock%}

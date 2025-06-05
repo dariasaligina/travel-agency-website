@@ -95,4 +95,13 @@ final class ToursController extends AbstractController
             "request_value"=>$request_value,
         ]);
     }
+
+    #[Route("tours", name: "main")]
+    public function main(){
+        return $this->render("tours/index.html.twig");
+    }
+    #[Route("tours/about", name:"about")]
+    public function about(){
+        return $this->render("tours/about.html.twig");
+    }
 }

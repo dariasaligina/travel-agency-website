@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToursController!{% endblock %}
+
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+
+        
+
+        {{include("tours/_header.html.twig")}}
+
+        <section id="showcase">
+            <div class="container">
+                <h1>Откройте для себя мир с нами</h1>
+                <p>Мы создаем незабываемые путешествия по России. Найдите свой идеальный тур.</p>
+                    
+            </div>
+        </section>
+
+        <section class="container boxes">
+            <div class="box">
+                <img src="{{  asset('images/price.png')}}" alt="Гарантия лучшей цены">
+                <h3>Гарантия лучшей цены</h3>
+                <p>Мы гарантируем самые выгодные цены на все наши туры</p>
+            </div>
+            <div class="box">
+                <img src="{{  asset('images/experience.png')}}" alt="Опытные гиды">
+                <h3>Опытные гиды</h3>
+                <p>Профессиональные гиды с глубокими знаниями о местах</p>
+            </div>
+            
+            <div class="box">
+                <img src="{{  asset('images/24-hours.png')}}" alt="Круглосуточная поддержка">
+                <h3>Круглосуточная поддержка</h3>
+                <p>Мы всегда на связи, чтобы помочь в любой ситуации</p>
+            </div>
+        </section>
+
+        <section class="popular-tours">
+            <div class="container">
+                <h2>Популярные туры</h2>
+                <div class="tour-grid">
+                    <div class="tour-block">
+                        <img src="{{  asset('images/Без названия-683ee2802b75e.jpg')}}" alt="Тульский экспресс">
+                        <a href="{{path('tour_description', {'id':1})}}"><h3>Тульский экспресс: История и вкус</h3></a>
+                        <p class="duration">4 дня</p>
+                        <p>Погрузитесь в историю оружейной столицы и узнайте секреты тульских пряников</p>
+                        <p class="price">от 30 000 RUB</p>
+                    </div>
+                    <div class="tour-block">
+                        <img src="{{  asset('images/Moscow-City2015-683ee6a415471.jpg')}}"  alt="Московский калейдоскоп">
+                        <a href="{{path('tour_description', {'id':24})}}"><h3>Московский калейдоскоп</h3></a>
+                        <p class="duration">5 дней</p>
+                        <p>От старины до современности - все грани столицы России</p>
+                        <p class="price">от 37 000 RUB</p>
+                    </div>
+                    <div class="tour-block">
+                        <img src="{{  asset('images/images (7)-683f01bda49b8.jpg')}}"  alt="Золотой Казан">
+                        <a href="{{path('tour_description', {'id':3})}}"><h3>Золотой Казан и Красный город</h3></a>
+                        <p class="duration">7 дней</p>
+                        <p>Где Восток встречается с Западом - увлекательное путешествие в Казань</p>
+                        <p class="price">от 45 000 RUB</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{{path("tour_catalog")}}" class="button_1">Смотреть все туры</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="testimonial">
+                    <img src="{{  asset('images/woman.jpg')}}" alt="Анна">
+                    <p>"Отличный тур в Тулу! Организация на высшем уровне, гид был очень знающий. Особенно понравилась экскурсия в Ясную Поляну."</p>
+                    <div class="author">Анна, Москва</div>
+                </div>
+                <div class="testimonial">
+                    <img src="{{  asset('images/man.jpg')}}" alt="Дмитрий">
+                    <p>"Путешествие в Казань превзошло все ожидания. Отдельное спасибо за гастрономическую экскурсию - мы попробовали столько вкусного!"</p>
+                    <div class="author">Дмитрий, Санкт-Петербург</div>
+                </div>
+            </div>
+        </section>
+
+        {{include("tours/_footer.html.twig")}}
+
+    {% endblock %}
