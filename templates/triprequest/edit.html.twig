@@ -8,11 +8,11 @@
 
 {% block body %}
 <div class="admin-menu-container">
-    <h1>Edit Triprequest</h1>
+    <h1>Редактировать запрос на путешествие</h1>
 
-    {{ include('triprequest/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('triprequest/_form.html.twig', {'button_label': 'Обновить'}) }}
 
-    <a href="{{ path('app_triprequest_index') }}">back to list</a>
+    <a href="{{ path('app_triprequest_index') }}">Назад к списку</a>
 
     {{ include('triprequest/_delete_form.html.twig') }}
     </div>

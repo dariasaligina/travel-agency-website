@@ -8,11 +8,11 @@
 
 {% block body %}
 <div class="admin-menu-container">
-    <h1>Edit City</h1>
+    <h1>Редактировать город</h1>
 
-    {{ include('city/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('city/_form.html.twig', {'button_label': 'Обновить'}) }}
 
-    <a href="{{ path('app_city_index') }}">back to list</a>
+    <a href="{{ path('app_city_index') }}">Назад к списку</a>
 
     {{ include('city/_delete_form.html.twig') }}
     </div>
