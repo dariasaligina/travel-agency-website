@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoutePhoto{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>RoutePhoto</h1>
+
+    <table class="styled-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ route_photo.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ route_photo.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_route_photo_index') }}">back to list</a>
+
+    <a href="{{ path('app_route_photo_edit', {'id': route_photo.id}) }}">edit</a>
+
+    {{ include('route_photo/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

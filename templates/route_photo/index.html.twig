@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoutePhoto index{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>RoutePhoto index</h1>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for route_photo in route_photos %}
+            <tr>
+                <td>{{ route_photo.id }}</td>
+                <td>{{ route_photo.photo }}</td>
+                <td>
+                    <a href="{{ path('app_route_photo_show', {'id': route_photo.id}) }}">show</a>
+                    <a href="{{ path('app_route_photo_edit', {'id': route_photo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_route_photo_new') }}">Create new</a>
+    </div>
+{% endblock %}

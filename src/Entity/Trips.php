@@ -18,7 +18,7 @@ class Trips
 
     #[ORM\ManyToOne(inversedBy: 'trips')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?route $route = null;
+    private ?Route $route = null;
 
     
     #[ORM\Column]

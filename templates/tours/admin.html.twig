@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-menu-container">
+<h1>Доступные таблицы</h1>
+<ul>
+<a href="{{path("app_city_index")}}"><li>
+Города
+</li></a>
+<a href="{{path("app_route_index")}}"><li>
+Маршруты
+</li></a>
+<a href="{{path("app_route_photo_index")}}"><li>
+Фото маршрутов
+</li></a>
+<a href="{{path("app_trips_index")}}"><li>
+Поездки
+</li></a>
+<a href="{{path("app_triprequest_index")}}"><li>
+Запросы на поездки
+</li></a>
+</ul>
+</div>
+
+{% endblock %}

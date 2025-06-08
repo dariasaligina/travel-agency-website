@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\Route as Rt;
+use App\Entity\Route as RouteEntity;
 use App\Entity\Triprequest;
 use App\Repository\CityRepository;
 use App\Repository\RouteRepository;
@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 final class ToursController extends AbstractController
 {
     #[Route('route/{id<\d+>}', name: 'tour_description')]
-    public function description(Rt $route, Request $request, EntityManagerInterface $entityManager): Response
+    public function description(RouteEntity $route, Request $request, EntityManagerInterface $entityManager): Response
     {
         $triprequest = new Triprequest();
         // Возможно, вам нужно будет установить route_id для Triprequest, если это необходимо для вашей логики
@@ -103,5 +103,9 @@ final class ToursController extends AbstractController
     #[Route("about", name:"about")]
     public function about(){
         return $this->render("tours/about.html.twig");
+    }
+    #[Route("admin", name:"admin")]
+    public function admin(){
+        return $this->render("tours/admin.html.twig");
     }
 }

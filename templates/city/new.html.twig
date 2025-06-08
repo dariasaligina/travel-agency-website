@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New City{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Create new City</h1>
+
+    {{ include('city/_form.html.twig') }}
+
+    <a href="{{ path('app_city_index') }}">back to list</a>
+    </div>
+{% endblock %}
