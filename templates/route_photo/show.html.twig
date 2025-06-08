@@ -17,8 +17,12 @@
                 <td>{{ route_photo.id }}</td>
             </tr>
             <tr>
-                <th>Фото</th>
+                <th>Адрес фото</th>
                 <td>{{ route_photo.photo }}</td>
+            </tr>
+            <tr>
+            <th>Фото</th>
+            <td><img src="{{ asset('images/' ~ route_photo.photo) }}" alt="Tour Image" style="height: 200px;"></td>
             </tr>
         </tbody>
     </table>

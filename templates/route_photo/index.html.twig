@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Адрес фото</th>
                 <th>Фото</th>
                 <th>Действия</th>
             </tr>
@@ -23,6 +24,7 @@
             <tr>
                 <td>{{ route_photo.id }}</td>
                 <td>{{ route_photo.photo }}</td>
+<td><img src="{{ asset('images/' ~ route_photo.photo) }}" alt="Tour Image" style="height: 50px;"></td>
                 <td>
                     <a href="{{ path('app_route_photo_show', {'id': route_photo.id}) }}">Показать</a>
                     <a href="{{ path('app_route_photo_edit', {'id': route_photo.id}) }}">Редактировать</a>
