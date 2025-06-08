@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('admin/route-photo')]
 final class RoutePhotoController extends AbstractController
@@ -30,6 +32,26 @@ final class RoutePhotoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('photo')->getData(); // Get the uploaded file
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Latin-ASCII', $originalFilename); // Use SluggerInterface
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    $this->addFlash('error', 'Failed to upload the image. Please try again.');
+                    return $this->redirectToRoute('app_route_photo_new');
+                }
+
+                $routePhoto->setPhoto($newFilename); // Set the filename in the entity
+            }
             $entityManager->persist($routePhoto);
             $entityManager->flush();
 
@@ -51,12 +73,32 @@ final class RoutePhotoController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_route_photo_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, RoutePhoto $routePhoto, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, RoutePhoto $routePhoto, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(RoutePhotoForm::class, $routePhoto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('photo')->getData(); // Get the uploaded file
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename); // Use SluggerInterface
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    $this->addFlash('error', 'Failed to upload the image. Please try again.');
+                    return $this->redirectToRoute('app_route_photo_edit', ['id' => $routePhoto->getId()]);
+                }
+
+                $routePhoto->setPhoto($newFilename); // Set the filename in the entity
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_route_photo_index', [], Response::HTTP_SEE_OTHER);
