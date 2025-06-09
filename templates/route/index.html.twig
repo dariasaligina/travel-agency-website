@@ -15,10 +15,11 @@
             <tr>
                 <th>Id</th>
                 <th>Название</th>
+                <th>Место отправления</th>
+                <th>Направление</th>
                 <th>Описание</th>
                 <th>Программа</th>
-                <th>Дополнительная информация</th>
-                <th>Длительность</th>
+                
                 <th>Длительность</th>
                 <th>Действия</th>
             </tr>
@@ -28,11 +29,12 @@
             <tr>
                 <td>{{ route.id }}</td>
                 <td>{{ route.name }}</td>
+                <td>{{route.departureCity.name}}</td>
+                <td>{{route.direction.name}}</td>
                 <td>{{ route.description |slice(0, 200) }}...</td>
                 <td>{{ route.program |slice(0, 200)}}...</td>
-                <td>{{ route.additionalInfo |slice(0, 200)}}...</td>
+                
                 <td>{{ route.duration }}</td>
-                <td>{{ route.routeSpan ? route.routeSpan.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
                 <td>
                     <a href="{{ path('app_route_show', {'id': route.id}) }}">Показать</a>
                     <a href="{{ path('app_route_edit', {'id': route.id}) }}">Редактировать</a>
@@ -47,5 +49,6 @@
     </table>
 
     <a href="{{ path('app_route_new') }}">Create new</a>
+    <a href="{{ path('admin') }}">Назад</a>
     </div>
 {% endblock %}

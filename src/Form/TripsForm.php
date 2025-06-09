@@ -19,7 +19,7 @@ class TripsForm extends AbstractType
             ->add('startDate')
             ->add('route', EntityType::class, [
                 'class' => RouteEntity::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }

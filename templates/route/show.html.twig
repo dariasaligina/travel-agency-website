@@ -17,6 +17,14 @@
                 <td>{{ route.id }}</td>
             </tr>
             <tr>
+                <th>Место отправления</th>
+                <td>{{route.departureCity.name}}</td>
+            </tr>
+            <tr>
+                <th>Направление</th>
+                <td>{{route.direction.name}}</td>
+            </tr>
+            <tr>
                 <th>Название</th>
                 <td>{{ route.name }}</td>
             </tr>
@@ -36,10 +44,7 @@
                 <th>Длительность</th>
                 <td>{{ route.duration }}</td>
             </tr>
-            <tr>
-                <th>Длительность</th>
-                <td>{{ route.routeSpan ? route.routeSpan.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
-            </tr>
+            
         </tbody>
     </table>
 

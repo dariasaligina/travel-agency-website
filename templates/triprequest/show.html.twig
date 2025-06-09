@@ -17,6 +17,14 @@
                 <td>{{ triprequest.id }}</td>
             </tr>
             <tr>
+                <th>Дата начала</th>
+                <td>{{ triprequest.trip.startDate|date("d.m.Y") }}</td>
+            </tr>
+            <tr>
+                <th>Название тура</th>
+                <td>{{ triprequest.trip.route.name }}</td>
+            </tr>
+            <tr>
                 <th>Имя</th>
                 <td>{{ triprequest.name }}</td>
             </tr>

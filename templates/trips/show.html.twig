@@ -17,6 +17,10 @@
                 <td>{{ trip.id }}</td>
             </tr>
             <tr>
+                <th>Маршрут</th>
+                <td><a href="{{path('app_route_show',{ "id":trip.route.id})}}">{{ trip.route.name }}</a></td>
+            </tr>
+            <tr>
                 <th>Цена</th>
                 <td>{{ trip.price }}</td>
             </tr>

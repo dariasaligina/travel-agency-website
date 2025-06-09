@@ -22,11 +22,11 @@ class RouteForm extends AbstractType
             ->add('route_span')
             ->add('departure_city', EntityType::class, [
                 'class' => City::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
             ->add('direction', EntityType::class, [
                 'class' => City::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }

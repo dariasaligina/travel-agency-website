@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Маршрут</th>
                 <th>Цена</th>
                 <th>Количество мест</th>
                 <th>Дата начала</th>
@@ -24,6 +25,7 @@
         {% for trip in trips %}
             <tr>
                 <td>{{ trip.id }}</td>
+                <td><a href="{{path('app_route_show',{ "id":trip.route.id})}}">{{ trip.route.name }}</a></td>
                 <td>{{ trip.price }}</td>
                 <td>{{ trip.spotsNumber }}</td>
                 <td>{{ trip.startDate ? trip.startDate|date('Y-m-d H:i:s') : '' }}</td>
@@ -41,5 +43,6 @@
     </table>
 
     <a href="{{ path('app_trips_new') }}">создать новое путешествие</a>
+    <a href="{{ path('admin') }}">Назад</a>
     </div>
 {% endblock %}

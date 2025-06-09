@@ -22,9 +22,15 @@ class Triprequest1Form extends AbstractType
             ->add('processed')
             ->add('trip', EntityType::class, [
                 'class' => Trips::class,
-                'choice_label' => 'id',
-            ])
-        ;
+                
+                'choice_label' => function (Trips $trip): string {
+                    $route = $trip->getRoute(); 
+                    $label = $trip->getStartDate()->format('d.m.Y'); 
+                    if ($route) {
+                        $label .= ' - ' . $route->getName(); 
+                    }
+                    return $label;
+                }]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
