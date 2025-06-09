@@ -28,7 +28,6 @@ final class Version20250601190739 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             CREATE TABLE route (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, departure_city_id INTEGER NOT NULL, direction_id INTEGER NOT NULL, name VARCHAR(128) NOT NULL, description CLOB DEFAULT NULL, program CLOB DEFAULT NULL, additional_info CLOB DEFAULT NULL, duration VARCHAR(128) NOT NULL, route_span VARCHAR(255) DEFAULT NULL --(DC2Type:dateinterval)
-            , trip_span VARCHAR(255) NOT NULL --(DC2Type:dateinterval)
             , CONSTRAINT FK_2C42079918B251E FOREIGN KEY (departure_city_id) REFERENCES city (id) ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT FK_2C42079AF73D997 FOREIGN KEY (direction_id) REFERENCES city (id) ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE)
         SQL);
         $this->addSql(<<<'SQL'
@@ -43,9 +42,7 @@ final class Version20250601190739 extends AbstractMigration
         $this->addSql(<<<'SQL'
             CREATE INDEX IDX_2C42079918B251E ON route (departure_city_id)
         SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE trips ADD COLUMN trip_span VARCHAR(255) NOT NULL
-        SQL);
+        
     }
 
     public function down(Schema $schema): void
