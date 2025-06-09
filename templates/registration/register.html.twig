@@ -2,22 +2,30 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    <div class="admin-menu-container">
 
-    <h1>Register</h1>
+    <h1>Регистрация</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Пароль'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'Согласен с условиями'
+        }) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Зарегистрироваться</button>
     {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
