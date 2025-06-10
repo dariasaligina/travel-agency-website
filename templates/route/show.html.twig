@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Route{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Маршрут</h1>
+
+    <table class="styled-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ route.id }}</td>
+            </tr>
+            <tr>
+                <th>Место отправления</th>
+                <td>{{route.departureCity.name}}</td>
+            </tr>
+            <tr>
+                <th>Направление</th>
+                <td>{{route.direction.name}}</td>
+            </tr>
+            <tr>
+                <th>Название</th>
+                <td>{{ route.name }}</td>
+            </tr>
+            <tr>
+                <th>Описание</th>
+                <td>{{ route.description }}</td>
+            </tr>
+            <tr>
+                <th>Программа</th>
+                <td>{{ route.program }}</td>
+            </tr>
+            <tr>
+                <th>Дополнительная информация</th>
+                <td>{{ route.additionalInfo }}</td>
+            </tr>
+            <tr>
+                <th>Длительность</th>
+                <td>{{ route.duration }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_route_index') }}">Назад к списку</a>
+
+    <a href="{{ path('app_route_edit', {'id': route.id}) }}">Редактировать</a>
+
+    {{ include('route/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

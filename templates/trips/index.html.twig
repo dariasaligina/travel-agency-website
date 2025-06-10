@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trips index{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Список поездок</h1>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Маршрут</th>
+                <th>Цена</th>
+                <th>Количество мест</th>
+                <th>Дата начала</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trip in trips %}
+            <tr>
+                <td>{{ trip.id }}</td>
+                <td><a href="{{path('app_route_show',{ "id":trip.route.id})}}">{{ trip.route.name }}</a></td>
+                <td>{{ trip.price }}</td>
+                <td>{{ trip.spotsNumber }}</td>
+                <td>{{ trip.startDate ? trip.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_trips_show', {'id': trip.id}) }}">Показать</a>
+                    <a href="{{ path('app_trips_edit', {'id': trip.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_trips_new') }}">создать новое путешествие</a>
+    <a href="{{ path('admin') }}">Назад</a>
+    </div>
+{% endblock %}

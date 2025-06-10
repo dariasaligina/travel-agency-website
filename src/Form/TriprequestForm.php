@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Triprequest;
-use App\Entity\trips;
-use App\Entity\Route;
+use App\Entity\Trips;
+use App\Entity\Route as RouteEntity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -37,8 +37,8 @@ class TriprequestForm extends AbstractType
                 'label' => 'Количество человек', // Изменяем название поля "people_number"
             ])
             ->add('trip', EntityType::class, [
-                'class' => trips::class,
-                'choice_label' => function (trips $trip): string {
+                'class' => Trips::class,
+                'choice_label' => function (Trips $trip): string {
                     // Форматируем дату в нужный вам формат
                     // Например, 'Y-m-d' для года-месяца-дня
                     // Или 'd.m.Y H:i' для дня.месяца.года Час:Минуты
@@ -63,7 +63,7 @@ class TriprequestForm extends AbstractType
         ]);
         $resolver->setRequired('route');
         // Specify the allowed types for the 'route' option
-        $resolver->setAllowedTypes('route', [Route::class, 'null']);
+        $resolver->setAllowedTypes('route', [RouteEntity::class, 'null']);
 
     }
 }

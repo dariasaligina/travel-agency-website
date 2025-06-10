@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trips{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Trips</h1>
+
+    <table class="styled-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trip.id }}</td>
+            </tr>
+            <tr>
+                <th>Маршрут</th>
+                <td><a href="{{path('app_route_show',{ "id":trip.route.id})}}">{{ trip.route.name }}</a></td>
+            </tr>
+            <tr>
+                <th>Цена</th>
+                <td>{{ trip.price }}</td>
+            </tr>
+            <tr>
+                <th>Количество мест</th>
+                <td>{{ trip.spotsNumber }}</td>
+            </tr>
+            <tr>
+                <th>Дата начала</th>
+                <td>{{ trip.startDate ? trip.startDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_trips_index') }}">Назад к списку</a>
+
+    <a href="{{ path('app_trips_edit', {'id': trip.id}) }}">Редактировать</a>
+
+    {{ include('trips/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

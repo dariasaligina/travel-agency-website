@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RoutePhoto{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Добавить новое фото</h1>
+
+    {{ include('route_photo/_form.html.twig') }}
+
+    <a href="{{ path('app_route_photo_index') }}">Назад к списку</a>
+    </div>
+{% endblock %}

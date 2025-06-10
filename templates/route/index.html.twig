@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Route index{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Маршруты</h1>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Место отправления</th>
+                <th>Направление</th>
+                <th>Описание</th>
+                <th>Программа</th>
+                
+                <th>Длительность</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for route in routes %}
+            <tr>
+                <td>{{ route.id }}</td>
+                <td>{{ route.name }}</td>
+                <td>{{route.departureCity.name}}</td>
+                <td>{{route.direction.name}}</td>
+                <td>{{ route.description |slice(0, 200) }}...</td>
+                <td>{{ route.program |slice(0, 200)}}...</td>
+                
+                <td>{{ route.duration }}</td>
+                <td>
+                    <a href="{{ path('app_route_show', {'id': route.id}) }}">Показать</a>
+                    <a href="{{ path('app_route_edit', {'id': route.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_route_new') }}">Create new</a>
+    <a href="{{ path('admin') }}">Назад</a>
+    </div>
+{% endblock %}

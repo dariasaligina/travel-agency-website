@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoutePhoto{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Фото маршрута</h1>
+
+    <table class="styled-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ route_photo.id }}</td>
+            </tr>
+            <tr>
+                <th>Адрес фото</th>
+                <td>{{ route_photo.photo }}</td>
+            </tr>
+            <tr>
+            <th>Фото</th>
+            <td><img src="{{ asset('images/' ~ route_photo.photo) }}" alt="Tour Image" style="height: 200px;"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_route_photo_index') }}">Назад к списку</a>
+
+    <a href="{{ path('app_route_photo_edit', {'id': route_photo.id}) }}">Редактировать</a>
+
+    {{ include('route_photo/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

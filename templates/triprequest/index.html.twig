@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Triprequest index{% endblock %}
+
+{% block stylesheets %}
+{{include("tours/_style.css.twig")}}
+{% endblock %}
+
+{% block body %}
+<div class="admin-menu-container">
+    <h1>Запросы на поездки</h1>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Дата начала</th>
+                <th>Название тура</th>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Номер телефона</th>
+                <th>Количество людей</th>
+                <th>Активна</th>
+                <th>Обработана</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for triprequest in triprequests %}
+            <tr>
+                <td>{{ triprequest.id }}</td>
+                <td>{{ triprequest.trip.startDate|date("d.m.Y") }}</td>
+                <td>{{ triprequest.trip.route.name }}</td>
+                <td>{{ triprequest.name }}</td>
+                <td>{{ triprequest.email }}</td>
+                <td>{{ triprequest.phone }}</td>
+                <td>{{ triprequest.peopleNumber }}</td>
+                <td>{{ triprequest.active ? 'Да' : 'Нет' }}</td>
+                <td>{{ triprequest.processed ? 'Да' : 'Нет' }}</td>
+                <td>
+                    <a href="{{ path('app_triprequest_show', {'id': triprequest.id}) }}">Показать</a>
+                    <a href="{{ path('app_triprequest_edit', {'id': triprequest.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_triprequest_new') }}">Создать новый запрос</a>
+    <a href="{{ path('admin') }}">Назад</a>
+    </div>
+{% endblock %}

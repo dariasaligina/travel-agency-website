@@ -16,7 +16,7 @@ class Triprequest
 
     #[ORM\ManyToOne(inversedBy: 'triprequests')]
     #[Assert\NotNull(message: 'Поездка должна быть указана')]
-    private ?trips $trip = null;
+    private ?Trips $trip = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Имя обязательно для заполнения')]
@@ -52,12 +52,12 @@ class Triprequest
         return $this->id;
     }
 
-    public function getTrip(): ?trips
+    public function getTrip(): ?Trips
     {
         return $this->trip;
     }
 
-    public function setTrip(?trips $trip): static
+    public function setTrip(?Trips $trip): static
     {
         $this->trip = $trip;
 
