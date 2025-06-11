@@ -20,31 +20,22 @@ final class ToursController extends AbstractController
     public function description(RouteEntity $route, Request $request, EntityManagerInterface $entityManager): Response
     {
         $triprequest = new Triprequest();
-        // Возможно, вам нужно будет установить route_id для Triprequest, если это необходимо для вашей логики
-        // $triprequest->setRoute($route);
         $form = $this->createForm(TriprequestForm::class, $triprequest, [
-            'route' => $route, // <--- Передаем объект Route в опции формы
+            'route' => $route, 
         ]);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            // Process the form data
-            // ...
-            // Redirect or render a success page
-            // return $this->redirectToRoute('...');
+
             $submittedTriprequest = $form->getData();
             $submittedTriprequest->setActive(True);
             $submittedTriprequest->setProcessed(false);
-            
-
-            // Здесь вы можете выполнить любую логику обработки:
-            // 1. Сохранить данные в базе данных:
             $entityManager->persist($submittedTriprequest);
             $entityManager->flush();
 
             $this->addFlash(
-                'success', // Тип сообщения (можно использовать 'success', 'warning', 'danger', 'info')
-                'Ваш запрос успешно отправлен! В ближайшее время с вами свяжется наш сотрудник.' // Текст сообщения
+                'success',
+                'Ваш запрос успешно отправлен! В ближайшее время с вами свяжется наш сотрудник.'
             );
             return $this->redirectToRoute('tour_description', ['id' => $route->getId()]);
         }

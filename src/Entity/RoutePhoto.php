@@ -47,7 +47,5 @@ class RoutePhoto
         $this->route = $route;
 
         return $this;
-    }
-
-   
+    }  
 }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ToursController!{% endblock %}
+{% block title %}{{route.name}}{% endblock %}
 
 
 {% block stylesheets %}
@@ -16,18 +16,13 @@
         function showSlides() {
             let i;
             let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
             slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        
         }
 
         function plusSlides(n) {
@@ -41,17 +36,12 @@
         function showManualSlides(n) {
             let i;
             let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
             if (n > slides.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = slides.length }
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
             slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
         }
     </script>
 
@@ -60,9 +50,6 @@
 {% block body %}
 
     {{include("tours/_header.html.twig")}}
-
-    
-
     <section id="main">
         <div class="container">
             <article id="main-col">
@@ -75,14 +62,10 @@
                         <img src="{{ asset('images/' ~ photo.photo) }}" style="height:300px">
                     </div>
                     {%endfor%}
-
-                    
-
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 
-
                 <h2>Программа Поездки</h2>
                 {{route.program | raw}}
                 
@@ -138,10 +121,4 @@
     </section>
 
     {{include("tours/_footer.html.twig")}}
-
-    
-
-
-
-
 {% endblock %}
