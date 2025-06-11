@@ -102,7 +102,6 @@
             text-align: center;
         }
 
-        /* Стили для слайд-шоу */
         .slideshow-container {
             position: relative;
             
@@ -141,7 +140,6 @@
         }
 
         
-        /* Стили для программы по дням */
         .itinerary-day {
             margin-bottom: 20px;
             padding: 15px;
@@ -154,7 +152,6 @@
             color: #e8491d;
         }
 
-        /* Стили для дат и цен */
         .dates-prices {
             margin-top: 20px;
             padding: 15px;
@@ -173,7 +170,6 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* Стили для организационной информации */
         .org-info {
             margin-top: 20px;
             padding: 15px;
@@ -188,7 +184,7 @@
             padding: 20px 0;
         }
 
-        /* Filter form styles */
+
         .filter-form {
             background-color: #fff;
             padding: 20px;
@@ -216,10 +212,10 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+            box-sizing: border-box; 
         }
         .filter-form select {
-            appearance: none; /* Remove default arrow in some browsers */
+            appearance: none; 
             background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
             background-repeat: no-repeat;
             background-position: right 8px top 50%, 0 0;
@@ -239,14 +235,14 @@
             background-color: #c7370f;
         }
 
-        /* Tour grid styles */
+
         .tour-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        /* Tour block styles */
+
         .tour-block {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -259,8 +255,8 @@
             height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
-            object-fit: cover; /* Ensure images fill the container without distortion */
-            height: 200px; /* Standard height for all images */
+            object-fit: cover; 
+            height: 200px; 
         }
         .tour-block h3 {
             color: #e8491d;
@@ -282,7 +278,7 @@
             color: #666;
         }
 
-        /* Responsive layout */
+
         @media (min-width: 768px) {
             .tour-container {
                 width: 90%;
@@ -307,22 +303,22 @@
             background-color: #d4edda;
             border-color: #c3e6cb;
         }
-                .flash-warning {
-                    color: #856404;
-                    background-color: #fff3cd;
-                    border-color: #ffeeba;
-                }
-                .flash-danger {
-                    color: #721c24;
-                    background-color: #f8d7da;
-                    border-color: #f5c6cb;
-                }
-                .flash-info {
-                    color: #0c5460;
-                    background-color: #d1ecf1;
-                    border-color: #bee5eb;
-                }
-            #showcase {
+        .flash-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+        .flash-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .flash-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        #showcase {
             min-height: 400px;
             background: url('images/baner.png') no-repeat 0 -400px;
             background-size: cover;
@@ -495,8 +491,6 @@
         }
 
 
-
-
         #main {
             padding: 40px 0;
             background: #fff;
@@ -546,7 +540,6 @@
         }
 
         
-
         .stats {
             background: #505050;
             color: #fff;
@@ -605,7 +598,7 @@
     }
     .contacts-container {
         display: grid;
-        grid-template-columns: 1fr; /* Default to single column */
+        grid-template-columns: 1fr; 
         gap: 40px;
     }
     .contact-info {
@@ -661,126 +654,124 @@
     @media (min-width: 768px) {
     
     .contact-info {
-        display: grid; /* Enable Grid for contact-info */
-        grid-template-columns: 1fr 1fr; /* Create two columns within contact-info */
-        gap: 20px; /* Add a gap between contact-items */
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px; 
         background: #f9f9f9;
         padding: 30px;
         border-radius: 10px;
     }
     .contact-map {
-        grid-column: span 2; /* Ensure the map spans two columns */
+        grid-column: span 2; 
     }
 }
 
-.admin-menu-container { /* Add a container for better structure */
+.admin-menu-container { 
         width: 80%;
         margin: auto;
         overflow: hidden;
-        background-color: #fff; /* White background for the menu block */
+        background-color: #fff; 
         padding: 20px;
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        border-radius: 8px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
         margin-top: 30px;
     }
     .admin-menu-container h1 {
-        color: #e8491d; /* Highlight color for the heading */
+        color: #e8491d; 
         margin-top: 0;
         margin-bottom: 20px;
-        font-size: 2em; /* Adjust font size */
-        text-align: center; /* Center the heading */
+        font-size: 2em; 
+        text-align: center;
     }
     .admin-menu-container ul {
         padding: 0;
         margin: 0;
-        list-style: none; /* Remove default list bullets */
+        list-style: none; 
     }
     .admin-menu-container li {
-        background-color: #f9f9f9; /* Light background for list items */
-        border: 1px solid #ddd; /* Light border */
-        margin-bottom: 10px; /* Space between list items */
-        padding: 12px 15px; /* Padding inside list items */
-        border-radius: 4px; /* Rounded corners for list items */
-        transition: background-color 0.3s ease; /* Smooth hover effect */
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 12px 15px;
+        border-radius: 4px; 
+        transition: background-color 0.3s ease; 
     }
     .admin-menu-container li:hover {
         background-color: #e8491d;
-        color: white; /* Highlight background on hover */
+        color: white; 
     }
     .admin-menu-container a {
-        color: #333; /* Default link color */
-        text-decoration: none; /* Remove underline */
-        font-size: 1.1em; /* Adjust font size */
-        display: block; /* Make the whole list item clickable */
+        color: #333;
+        text-decoration: none; 
+        font-size: 1.1em; 
+        display: block; 
     }
      .admin-menu-container li:hover a {
-        color: #fff; /* White text on hover */
+        color: #fff; 
      }
 
-/* Basic table styling */
         .styled-table {
-            width: 90%; /* Adjust width as needed */
-            margin: 20px auto; /* Center the table with margin */
-            border-collapse: collapse; /* Remove space between borders */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-            background-color: #fff; /* White background */
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+            background-color: #fff;
         }
-        /* Table header styling */
+       
         .styled-table thead tr {
-            background-color: #e8491d; /* Dark background for header */
-            color: #ffffff; /* White text */
-            text-align: left; /* Align text to the left */
+            background-color: #e8491d; 
+            color: #ffffff; 
+            text-align: left; 
         }
-        /* Table header and data cell styling */
+        
         .styled-table th,
         .styled-table td {
-            padding: 12px 15px; /* Padding for cells */
+            padding: 12px 15px;
         }
-        /* Table body row styling */
+        
         .styled-table tbody tr {
-            border-bottom: 1px solid #dddddd; /* Add a bottom border to rows */
+            border-bottom: 1px solid #dddddd; 
         }
-        /* Alternating row colors for better readability */
+        
         .styled-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3; /* Light gray background for even rows */
+            background-color: #f3f3f3; 
         }
-        /* Highlight row on hover */
+       
         .styled-table tbody tr:hover {
-            background-color:rgba(232, 73, 29, 0.3); /* Light blue background on hover */
+            background-color:rgba(232, 73, 29, 0.3); 
         }
-        /* Style for action links */
+        
         .admin-menu-container a {
-            color: #e8491d; /* Highlight color for links */
-            text-decoration: none; /* Remove underline */
-            margin-right: 10px; /* Space between links */
+            color: #e8491d; 
+            text-decoration: none; 
+            margin-right: 10px; 
         }
         .admin-menu-container a:hover {
-            text-decoration: underline; /* Add underline on hover */
+            text-decoration: underline; 
         }
-        /* Style for the "no records found" row */
+        
         .styled-table tbody tr td[colspan="8"] {
-            text-align: center; /* Center text */
-            font-style: italic; /* Italicize text */
-            color: #666; /* Gray text color */
+            text-align: center; 
+            font-style: italic; 
+            color: #666; 
         }
-        /* Style for the "Create new" link */
+        
         .create-new-link {
-            display: block; /* Make it a block element */
-            width: 150px; /* Set a width */
-            margin: 20px auto; /* Center the link */
-            padding: 10px 15px; /* Padding */
-            background-color: #e8491d; /* Highlight color background */
-            color: #fff; /* White text */
-            text-align: center; /* Center text */
-            text-decoration: none; /* Remove underline */
-            border-radius: 5px; /* Rounded corners */
-            transition: background-color 0.3s ease; /* Smooth hover effect */
+            display: block; 
+            width: 150px; 
+            margin: 20px auto; 
+            padding: 10px 15px;
+            background-color: #e8491d;
+            color: #fff;
+            text-align: center; 
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         .create-new-link:hover {
-            background-color: #c7370f; /* Darker highlight on hover */
+            background-color: #c7370f; 
         }
 
-        
         
         .admin-menu-container label {
             display: block;
@@ -801,10 +792,10 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+            box-sizing: border-box; 
         }
         .admin-menu-container select {
-            appearance: none; /* Remove default arrow in some browsers */
+            appearance: none; 
             background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
             background-repeat: no-repeat;
             background-position: right 8px top 50%, 0 0;
@@ -830,7 +821,7 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+            box-sizing: border-box; 
         }
 
     </style>
