@@ -19,38 +19,34 @@ class TriprequestForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
         $route = $options['route'];
         $now = new DateTimeImmutable();
 
         $builder
-            ->add('name', TextType::class, [ // Указываем тип поля явно
-                'label' => 'Ваше имя', // Изменяем название поля "name"
+            ->add('name', TextType::class, [ 
+                'label' => 'Ваше имя', 
             ])
-            ->add('email', EmailType::class, [ // Указываем тип поля явно
-                'label' => 'Ваш Email', // Изменяем название поля "email"
+            ->add('email', EmailType::class, [ 
+                'label' => 'Ваш Email', 
             ])
-            ->add('phone', TextType::class, [ // Указываем тип поля явно
-                'label' => 'Ваш телефон', // Изменяем название поля "phone"
+            ->add('phone', TextType::class, [ 
+                'label' => 'Ваш телефон',
             ])
-            ->add('people_number', IntegerType::class, [ // Указываем тип поля явно (IntegerType или NumberType)
-                'label' => 'Количество человек', // Изменяем название поля "people_number"
+            ->add('people_number', IntegerType::class, [ 
+                'label' => 'Количество человек', 
             ])
             ->add('trip', EntityType::class, [
                 'class' => Trips::class,
                 'choice_label' => function (Trips $trip): string {
-                    // Форматируем дату в нужный вам формат
-                    // Например, 'Y-m-d' для года-месяца-дня
-                    // Или 'd.m.Y H:i' для дня.месяца.года Час:Минуты
                     return $trip->getStartDate()->format('d.m.Y');
-                }, // Оставляем id как значение, но можем изменить отображение
-                'label' => 'Выберите дату поездки', // Изменяем название поля "trip"
-                'query_builder' => function (EntityRepository $er) use ($route, $now) { // Use $now here
+                }, 
+                'label' => 'Выберите дату поездки', 
+                'query_builder' => function (EntityRepository $er) use ($route, $now) { 
                     return $er->createQueryBuilder('t')
                         ->where('t.route = :route')
-                        ->andWhere('t.startDate > :now') // Use t.startDate and a parameter :now
+                        ->andWhere('t.startDate > :now')
                         ->setParameter('route', $route)
-                        ->setParameter('now', $now) // Set the parameter :now to the current date/time
+                        ->setParameter('now', $now)
                         ->orderBy('t.startDate', 'ASC');
                 },
             ]);
@@ -62,7 +58,6 @@ class TriprequestForm extends AbstractType
             'data_class' => Triprequest::class,
         ]);
         $resolver->setRequired('route');
-        // Specify the allowed types for the 'route' option
         $resolver->setAllowedTypes('route', [RouteEntity::class, 'null']);
 
     }

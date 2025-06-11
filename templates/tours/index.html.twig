@@ -1,16 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ToursController!{% endblock %}
+{% block title %}Главная{% endblock %}
 
 
 {% block stylesheets %}
 {{include("tours/_style.css.twig")}}
+
 {% endblock %}
 
 {% block body %}
-
-        
-
         {{include("tours/_header.html.twig")}}
 
         <section id="showcase">
@@ -49,21 +47,21 @@
                         <a href="{{path('tour_description', {'id':1})}}"><h3>Тульский экспресс: История и вкус</h3></a>
                         <p class="duration">4 дня</p>
                         <p>Погрузитесь в историю оружейной столицы и узнайте секреты тульских пряников</p>
-                        <p class="price">от 30 000 RUB</p>
+                        
                     </div>
                     <div class="tour-block">
                         <img src="{{  asset('images/Moscow-City2015-683ee6a415471.jpg')}}"  alt="Московский калейдоскоп">
                         <a href="{{path('tour_description', {'id':24})}}"><h3>Московский калейдоскоп</h3></a>
                         <p class="duration">5 дней</p>
                         <p>От старины до современности - все грани столицы России</p>
-                        <p class="price">от 37 000 RUB</p>
+                        
                     </div>
                     <div class="tour-block">
                         <img src="{{  asset('images/images (7)-683f01bda49b8.jpg')}}"  alt="Золотой Казан">
                         <a href="{{path('tour_description', {'id':3})}}"><h3>Золотой Казан и Красный город</h3></a>
                         <p class="duration">7 дней</p>
                         <p>Где Восток встречается с Западом - увлекательное путешествие в Казань</p>
-                        <p class="price">от 45 000 RUB</p>
+                        
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 30px;">

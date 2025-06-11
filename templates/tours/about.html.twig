@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ToursController!{% endblock %}
+{% block title %}О нас{% endblock %}
 
 
 {% block stylesheets %}
@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block body %}
-
        {{include("tours/_header.html.twig")}}
         <section id="main">
             <div class="container">
@@ -36,11 +35,8 @@
                         <h2>Наше видение</h2>
                         <p>Стать ведущим туроператором по внутреннему туризму в России, предлагая инновационные туристические продукты и сервис высочайшего уровня. Мы хотим, чтобы путешествия по России стали первым выбором для наших соотечественников.</p>
                     </div>
-                </div>
-                
-                
+                </div>     
         </section>
-        
         <section class="stats">
             <div class="container">
                 <div class="stats-container">
@@ -77,12 +73,8 @@
         <h2>Наши контакты</h2>
         
         <div class="contacts-container">
-            <!-- Контактная информация -->
         
             <div class="contact-info">
-                
-
-                
                 <div class="contact-item">
                     <div class="contact-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#e8491d">
@@ -132,24 +124,15 @@
                         <p>Сб-Вс: 10:00 - 18:00</p>
                     </div>
                 </div>
-                
-                
+                  
             </div>
-            
-            
-            
-            <!-- Карта -->
+
             <div class="contact-map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2239.6964581144925!2d37.421884399999996!3d55.850581999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54792741a84ab%3A0x49675e2fc173f255!2z0KLRg9GA0LjRgdGC0YHQutCw0Y8g0YPQuy4sIDE1LCDQnNC-0YHQutCy0LAsIDEyNTQ1OQ!5e0!3m2!1sru!2sru!4v1749138042858!5m2!1sru!2sru" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
 </section>
-
-
-
-
-
         {{include("tours/_footer.html.twig")}}
     
 {%endblock%}

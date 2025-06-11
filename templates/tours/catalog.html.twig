@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ToursController!{% endblock %}
+{% block title %}каталог{% endblock %}
 
 
 {% block stylesheets %}
@@ -43,9 +43,7 @@
             </form>
         </div>
         
-
         <div class="tour-grid">
-
             {%for route in routs%}
             <div class="tour-block">
                 <img src="{{ asset('images/' ~ route.getPhotos().ToArray()[0].photo) }}" alt="Tour Image">

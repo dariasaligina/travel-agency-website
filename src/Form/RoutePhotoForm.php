@@ -15,14 +15,14 @@ class RoutePhotoForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photo', FileType::class, [  // Change to FileType
+            ->add('photo', FileType::class, [ 
                     'label' => 'Photo (Image file)',
-                    'mapped' => false, // Important: disable mapping to the entity
-                    'required' => false, // Adjust as needed
+                    'mapped' => false, 
+                    'required' => false, 
                 ])
             ->add('route', EntityType::class, [
                 'class' => RouteEntity::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }
